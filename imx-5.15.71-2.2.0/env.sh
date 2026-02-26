@@ -5,7 +5,7 @@
 # Docker
 
 DOCKER_IMAGE_TAG="imx-yocto"
-DOCKER_WORKDIR="/opt/yocto"
+DOCKER_WORKDIR="${HOME}/Desktop/i.mx6/imx-yocto-build"
 
 # Yocto
 
@@ -13,7 +13,7 @@ IMX_RELEASE="imx-5.15.71-2.2.0"
 
 YOCTO_DIR="${DOCKER_WORKDIR}/${IMX_RELEASE}-build"
 
-MACHINE="imx8mpevk"
+MACHINE="imx6ull14x14evk"
 DISTRO="fsl-imx-xwayland"
 IMAGES="imx-image-core"
 

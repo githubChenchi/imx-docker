@@ -6,7 +6,7 @@
 #
 
 # source the common variables
-. ./env.sh
+. ./imx-5.15.71-2.2.0/env.sh
 
 usage() {
     echo -e "\e[3m\nUsage: $0 [path_to_Dockerfile]\e[0m\n"

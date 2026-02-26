@@ -14,7 +14,7 @@
 #
 
 # source the common variables
-. ./env.sh
+. ./imx-5.15.71-2.2.0/env.sh
 
 # run the docker image
 docker run -it --rm \

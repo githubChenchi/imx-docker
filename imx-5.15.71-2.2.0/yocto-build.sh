@@ -12,6 +12,8 @@ cd ${YOCTO_DIR}
 
 # Init
 
+export REPO_URL="https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/"
+
 repo init \
     -u ${REMOTE} \
     -b ${BRANCH} \
