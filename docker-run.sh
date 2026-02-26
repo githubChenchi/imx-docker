@@ -16,10 +16,22 @@
 # source the common variables
 . ./imx-5.15.71-2.2.0/env.sh
 
+# container name
+CONTAINER_NAME="imx6ull-yocto"
+
 # run the docker image
-docker run -it --rm \
-    --volume ${HOME}:${HOME} \
-    --volume ${DOCKER_WORKDIR}:${DOCKER_WORKDIR} \
-    --volume $(pwd)/${IMX_RELEASE}:${DOCKER_WORKDIR}/${IMX_RELEASE} \
-    "${DOCKER_IMAGE_TAG}" \
-    $1
+if docker inspect ${CONTAINER_NAME} >/dev/null 2>&1; then
+    echo enter a container
+    docker start ${CONTAINER_NAME}
+    docker exec -it --user $(id -u):$(id -g) ${CONTAINER_NAME} /bin/bash
+else
+    echo create a new container
+    docker run -it \
+        --name ${CONTAINER_NAME} \
+        --user $(id -u):$(id -g) \
+        --volume ${HOME}:${HOME} \
+        --volume ${DOCKER_WORKDIR}:${DOCKER_WORKDIR} \
+        --volume $(pwd)/${IMX_RELEASE}:${DOCKER_WORKDIR}/${IMX_RELEASE} \
+        "${DOCKER_IMAGE_TAG}" \
+        $1
+fi
